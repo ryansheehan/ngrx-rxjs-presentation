@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/ngrx-rxjs-presentation/">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ngrx & rxjs practices</title>
-  <link rel="stylesheet" href="/src.e31bb0bc.css"></head>
+    <link rel="stylesheet" href="src.4a46e35b.css" />
+  </head>
   <body>
     <div class="reveal">
       <div class="slides">
-        <section data-markdown="" data-separator="^\r?\n---\r?\n$" data-separator-vertical="^\r?\n----\r?\n$" data-separator-notes="^Note:">
-
+        <section
+          data-markdown=""
+          data-separator="^\r?\n---\r?\n$"
+          data-separator-vertical="^\r?\n----\r?\n$"
+          data-separator-notes="^Note:"
+        >
           <script type="text/template">
             # Best practices
-                        
+
             <div style="display: inline-flex; height:64px; justify-content:center;align-items:center;">
               <img src="assets/rxjs-logo.png" style="display:inline" />
               <img src="assets/ngrx-logo.svg"/>
@@ -38,8 +44,8 @@
 
             ----
 
-            ## `unsubscribe` <span style="font-size:0.5em">vs</span> `takeUntil` 
-            
+            ## `unsubscribe` <span style="font-size:0.5em">vs</span> `takeUntil`
+
             ```typescript [1,5,8-9,13|2,6,10|3,7,11-12]
             const data$: Observable<unknown>;
             const subs = [];
@@ -98,13 +104,13 @@
             * handle http error codes
             * use `throwError` to return business error
 
-            ```typescript          
+            ```typescript
             http.get<Data[]>('api/resource').pipe(
               catchError((error: HttpErrorResponse) => {
                 const {status, message} = error;
                 return status === 404 ? of([]) : throwError(message);
               })
-            );            
+            );
             ```
 
             ---
@@ -121,21 +127,11 @@
 
             ## best practices
 
-            * prefer enumerations to booleans <!-- .element: class="fragment" data-fragment-index="1" -->
-            * treat actions like function calls <!-- .element: class="fragment" data-fragment-index="2" -->
-            * actions provide reducer all arguments <!-- .element: class="fragment" data-fragment-index="3" -->
-            * most actions represent user's intent <!-- .element: class="fragment" data-fragment-index="4" -->
-            * use selectors for computed values <!-- .element: class="fragment" data-fragment-index="5" -->
-
-            ---
-
-            ## facade the store
-
-            ![facade pattern](assets/ngrx-facade.png)
+            * prefer enumerations to booleans
           </script>
         </section>
       </div>
     </div>
-    <script src="/src.e31bb0bc.js"></script>
+    <script src="src.9dceb535.js"></script>
   </body>
 </html>
